@@ -22,7 +22,7 @@ initializeGame();
 function initializeGame(){
 
     space.forEach(space => space.addEventListener("click", spaceClicked));
-    statusText.textContent = `${currentPlayer}'s turn`;
+    statusText.textContent = `Ready to start when you are!`;
     running = true;
 }
 function spaceClicked(){
@@ -41,6 +41,11 @@ function updateSpace(space, index){
 }
 function changePlayer(){
     currentPlayer = (currentPlayer == "X") ? "O" : "X";
+    if(options === ["", "", "", "", "", "", "", "", ""]){
+       // console.log("conditionWorking")
+       statusText.textContent = `Ready to start when you are!`
+       return;
+    }
     statusText.textContent = `${currentPlayer}'s turn`;
 }
 function checkWinner(){
@@ -74,13 +79,13 @@ function checkWinner(){
     }
 }
   
- restart.addEventListener("click", restart);
-
-function restart1(){
-    currentPlayer = "X";
+ restart.addEventListener("click", ()=>{
+    //console.log("restart")
+    //currentPlayer = "";
     options = ["", "", "", "", "", "", "", "", ""];
-    statusText.textContent = `${currentPlayer}'s turn`;
+    statusText.textContent = `Ready to start when you are!`
     document.querySelectorAll('.space')
-    spaces.forEach(space => space.textContent = "");
+    space.forEach(space => space.textContent = "");
     running = true;
 }
+ );
